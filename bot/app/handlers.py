@@ -6,6 +6,7 @@ from .keyboards import PLAY
 
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
+
 router = Router()
 TELEGRAM_BOT_TOKEN = "7404403100:AAHxn7iAEN-g8LzpZFOqTCW1Z_KEsEO3kwQ"
 bot = Bot(token=TELEGRAM_BOT_TOKEN)
@@ -32,6 +33,7 @@ Get ready to ignite your earnings with $BLAZE!
 Join our communities: 
 Telegram [https://t.me/blazetoken_Community] $BLAZE Community
 X []"""
+
 
 @router.message(CommandStart())
 async def start(message: Message):

@@ -1,16 +1,18 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def home(request):
-    return render(request, 'home.html')
-
-def task(request):
-    return render(request, 'task.html')
-
-def friends(request):
-    return render(request, 'friend.html')
-
-def boost(request):
-    return render(request, 'boost.html')
+class HomeView(TemplateView):
+    template_name = 'home.html'
 
 
+class TaskView(TemplateView):
+    template_name = 'task.html'
+
+
+class FriendsView(TemplateView):
+    template_name = 'friend.html'
+
+
+class BoostView(TemplateView):
+    template_name = 'boost.html'

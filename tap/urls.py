@@ -4,8 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('task/', views.task, name='task'),
-    path('boost/', views.boost, name='boost'),
-    path('friends/', views.friends, name='friends'),
+    path('', views.HomeView.as_view(), name='home'),
+    path('task/', views.TaskView.as_view(), name='task'),
+    path('boost/', views.BoostView.as_view(), name='boost'),
+    path('friends/', views.FriendsView.as_view(), name='friends'),
 ]
