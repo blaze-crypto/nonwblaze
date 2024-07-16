@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from tap.models import Coins, Tasks, Boosts, UserBoost
+from tap.models import Coins, Tasks, Boosts, UserBoost, Friends
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -69,3 +69,15 @@ class GetUserBoostsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserBoost
         fields = ('user', 'boost', 'level')
+
+
+class FriendsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Friends
+        fields = '__all__'
+
+
+class GetFriendsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Friends
+        fields = ('id', 'user', 'friend')

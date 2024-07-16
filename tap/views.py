@@ -7,7 +7,7 @@ from .models import Coins, Tasks, Boosts, UserBoost, TasksTypes, Friends
 from .serializers import (CoinsSerializer, GetCoinsSerializer,
                           TasksSerializer, GetTasksSerializer,
                           BoostsSerializer, GetBoostsSerializer,
-                          UserBoostSerializer, GetUserBoostsSerializer)
+                          UserBoostSerializer, GetUserBoostsSerializer, FriendsSerializer)
 
 
 class CoinViewset(viewsets.ModelViewSet):
@@ -44,6 +44,15 @@ class UserBoostViewset(viewsets.ModelViewSet):
         if self.request.method == 'POST':
             return UserBoostSerializer
         return GetUserBoostsSerializer
+
+
+class FriendViewset(viewsets.ModelViewSet):
+    queryset = Friends.objects.all()
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return FriendsSerializer
+        return FriendsSerializer
 
 
 class HomeView(TemplateView):

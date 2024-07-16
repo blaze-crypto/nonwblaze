@@ -10,6 +10,7 @@ router.register('coins', views.CoinViewset)
 router.register('boosts', views.BoostViewset)
 router.register('user-boosts', views.UserBoostViewset)
 router.register('tasks', views.TaskViewset)
+router.register('friends', views.FriendViewset)
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
