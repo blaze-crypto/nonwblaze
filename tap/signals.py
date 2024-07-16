@@ -7,4 +7,4 @@ from .models import Coins
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_coins(sender, instance, created, **kwargs):
     if created:
-        Coins.objects.create(user=instance)
+        Coins.objects.create(coin_user=instance)

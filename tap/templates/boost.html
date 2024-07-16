@@ -1,67 +1,85 @@
 <!DOCTYPE html>
 {% load static %}
+{% load dictioanry_tags %}  <!-- Corrected the custom template tag name -->
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$BLAZE</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="manifest" href="{% static 'json/manifest.json' %}">
     <meta name="theme-color" content="#ff9800">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
 </head>
 <body>
-   <div class="boost-container">
-    <h1 class="boost-title">🚀Boosts</h1>
-
-    <div class="boost-box">
-        <div class="boost-item" data-boost="multitap">
-            <div class="boost-content">
-                <span class="boost-icon">🖐</span>
-                <div class="boost-details">
-                    <h3>Multitap</h3>
-                    <p class="boost-price">1000 $BLZ</p>
-                    <p class="boost-level">Level 1</p>
-                    <button class="get-boost-btn">Buy</button>
+    <div class="boost-container">
+        <h1 class="boost-title">🚀Boosts</h1>
+        <div class="boost-box">
+            {% for boost in boosts %}
+            <div class="boost-item" data-boost="{{ boost.id }}">
+                <div class="boost-content">
+                    <span class="boost-icon">
+                        {% if boost.boost_title == 'Multitap' %}
+                            🖐
+                        {% elif boost.boost_title == 'Energy Limit' %}
+                            🔋
+                        {% elif boost.boost_title == 'Recharge Speed' %}
+                            🔄
+                        {% else %}
+                            ❓  <!-- Add a default emoji or handle unknown boosts -->
+                        {% endif %}
+                    </span>
+                    <div class="boost-details">
+                        <h3>{{ boost.boost_title }}</h3>
+                        <p class="boost-price">{{ boost.boost_price }} $BLZ</p>
+                        <p class="boost-level">Level {{ user_boost_levels|get_item:boost.id|default:0 }}</p>
+                        <button class="get-boost-btn" data-boost-id="{{ boost.id }}" data-boost-price="{{ boost.boost_price }}">Buy</button>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-
-        <div class="boost-item" data-boost="energy-limit">
-            <div class="boost-content">
-                <span class="boost-icon">🔋</span>
-                <div class="boost-details">
-                    <h3>Energy Limit</h3>
-                    <p class="boost-price">2000 $BLZ</p>
-                    <p class="boost-level">Level 1</p>
-                    <button class="get-boost-btn">Buy</button>
-                </div>
-            </div>
+        <div class="buttons">
+            <button onclick="location.href='{% url 'friends' %}'" id="friends-btn">👥 Friends</button>
+            <button onclick="location.href='{% url 'task' %}'" id="tasks-btn">📋 Tasks</button>
+            <button onclick="location.href='{% url 'home' %}'">🏠︎ Home</button>
         </div>
-
-        <div class="boost-item" data-boost="recharge-speed">
-            <div class="boost-content">
-                <span class="boost-icon">🔄</span>
-                <div class="boost-details">
-                    <h3>Recharge Speed</h3>
-                    <p class="boost-price">3000 $BLZ</p>
-                    <p class="boost-level">Level 1</p>
-                    <button class="get-boost-btn">Buy</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Add more boost items here as needed -->
-    </div>
-       <div class="buttons">
-        <button onclick="location.href='{% url 'friends' %}'" id="friends-btn">👥 Friends</button>
-        <button onclick="location.href='{% url 'task' %}'" id="tasks-btn">📋 Tasks</button>
-           <button onclick="location.href='{% url 'home' %}'">🏠︎ Home</button>
     </div>
 
-    </div>
-
-    <script src="{% static 'js/script.js' %}"></script>
+    <!-- JavaScript for handling Buy button -->
+    <script>
+        document.querySelectorAll('.get-boost-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const boostId = this.getAttribute('data-boost-id');
+                const boostPrice = parseInt(this.getAttribute('data-boost-price'));
+                fetch('{% url 'buy_boost' %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({
+                        boost_id: boostId,
+                        boost_price: boostPrice,
+                    }),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error buying boost. Please try again later.');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

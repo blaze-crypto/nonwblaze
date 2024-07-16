@@ -14,10 +14,18 @@
 <body>
     <div class="friends-container">
         <h1 class="friends-title">👥 Friends</h1>
-        <button class="invite-button">Invite a Friend</button>
+        <button class="invite-button" onclick="location.href='https://t.me/tap_blaze_bot?start=invite'">Invite a Friend</button>
         <p class="reward-text">5 000 000 $BLZ per invited friend</p>
         <div class="invited-friends-box">
-            <p class="no-friends">You have no Friends 😢</p>
+            {% if friends %}
+                <ul>
+                    {% for friend, invite_link in friends %}
+                        <li>{{ friend.username }} - <a href="{{ invite_link }}" target="_blank">Invite Link</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-friends">You have no Friends 😢</p>
+            {% endif %}
         </div>
     </div>
     <div class="buttons">
