@@ -88,6 +88,13 @@ def task_complete(request, task_id):
     return redirect(task.task_url)
 
 
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+
+from .models import Friends, Coins  # Assuming you have models for Friends and Coins
+
+
 class FriendsView(ListView):
     template_name = 'friend.html'
     context_object_name = 'friends_list'
@@ -110,6 +117,31 @@ class FriendsView(ListView):
         ]
         context['friends'] = zip(friends, invite_links)
         return context
+
+    @login_required
+    def post(self, request, *args, **kwargs):
+        if 'invited_friend_id' in request.POST:
+            invited_friend_id = request.POST['invited_friend_id']
+            try:
+                invited_friend = Friends.objects.get(pk=invited_friend_id)
+                if invited_friend not in self.get_queryset(self):
+                    current_user_friends = Friends.objects.get(user=request.user).friends
+                    current_user_friends.add(invited_friend)
+                    current_user_friends.save()
+                    try:
+                        user_coins, created = Coins.objects.get_or_create(user=request.user)
+                        user_coins.coin += 5000
+                        user_coins.save()
+                    except Coins.DoesNotExist:
+                        Coins.objects.create(user=request.user, coins=5000)
+                    return redirect('friends')
+                else:
+                    messages.error(request, "Friend is already in your friends list.")
+                    return redirect('friends')
+            except Friends.DoesNotExist:
+                messages.error(request, "Friend not found.")
+                return redirect('friends')
+        return super().post(request, *args, **kwargs)
 
 
 class BoostView(ListView):

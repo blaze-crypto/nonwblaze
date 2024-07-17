@@ -6,7 +6,7 @@ User = get_user_model()
 
 class Friends(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
-    friends = models.ManyToManyField(User, related_name='friends', blank=True, null=True)
+    friends = models.ManyToManyField(User, related_name='friends')
 
     def __str__(self):
         return f'{self.user} - {self.friends.count()} friends'

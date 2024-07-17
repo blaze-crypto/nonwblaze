@@ -20,7 +20,7 @@
             {% if friends %}
                 <ul>
                     {% for friend, invite_link in friends %}
-                        <li>{{ friend.username }} - <a href="{{ invite_link }}" target="_blank">Invite Link</a></li>
+                        <li>{{ friend.username }} - <a href="{{ invite_link }}" target="_blank">Invite Link</a> <button onclick="copyInviteLink('{{ invite_link }}')">Copy Invite Link</button></li>
                     {% endfor %}
                 </ul>
             {% else %}
@@ -35,5 +35,18 @@
     </div>
 
     <script src="{% static 'js/script.js' %}"></script>
+    <script>
+            function copyInviteLink(link) {
+                navigator.clipboard.writeText(link)
+                    .then(() => {
+                        console.log('Invite link copied to clipboard!');
+                        alert('Invite link copied to clipboard!');
+                    })
+                .catch(err => {
+                    console.error('Could not copy text:', err);
+                    alert('Could not copy text: ' + err);
+                });
+            }
+    </script>
 </body>
 </html>

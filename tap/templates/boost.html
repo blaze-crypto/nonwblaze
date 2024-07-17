@@ -34,7 +34,7 @@
                         <h3>{{ boost.boost_title }}</h3>
                         <p class="boost-price">{{ boost.boost_price }} $BLZ</p>
                         <p class="boost-level">Level {{ user_boost_levels|get_item:boost.id|default:0 }}</p>
-                        <button class="get-boost-btn" data-boost-id="{{ boost.id }}" data-boost-price="{{ boost.boost_price }}">Buy</button>
+                        <a href="{% url 'buy_boost' %}" class="get-boost-btn" data-boost-id="{{ boost.id }}" data-boost-price="{{ boost.boost_price }}">Buy</a>
                     </div>
                 </div>
             </div>
