@@ -6,6 +6,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 
+router.register('register', views.RegisterViewSet)
 router.register('coins', views.CoinViewset)
 router.register('boosts', views.BoostViewset)
 router.register('user-boosts', views.UserBoostViewset)
