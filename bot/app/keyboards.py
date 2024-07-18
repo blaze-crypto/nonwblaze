@@ -5,7 +5,7 @@ START = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="Tap🖐 and Blaze🔥",
-                web_app=WebAppInfo(url="https://x.com/home")  #<=======SHU YERGA URL NI YOZASIZ ===================>
+                web_app=WebAppInfo(url="https://localhost:8000/")  #<=======SHU YERGA URL NI YOZASIZ ===================>
             )
         ],
         [
@@ -22,7 +22,7 @@ profile = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="🔥TAP🔥",
-                web_app=WebAppInfo(url="https://x.com/home") #<=======SHU YERGA URL NI YOZASIZ ===================>
+                web_app=WebAppInfo(url="https://localhost:8000/") #<=======SHU YERGA URL NI YOZASIZ ===================>
             )
         ],
         [

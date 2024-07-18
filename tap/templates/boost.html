@@ -46,40 +46,5 @@
             <button onclick="location.href='{% url 'home' %}'">🏠︎ Home</button>
         </div>
     </div>
-
-    <!-- JavaScript for handling Buy button -->
-    <script>
-        document.querySelectorAll('.get-boost-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const boostId = this.getAttribute('data-boost-id');
-                const boostPrice = parseInt(this.getAttribute('data-boost-price'));
-                fetch('{% url 'buy_boost' %}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': '{{ csrf_token }}',
-                    },
-                    body: JSON.stringify({
-                        boost_id: boostId,
-                        boost_price: boostPrice,
-                    }),
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log(data);
-                    location.reload();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error buying boost. Please try again later.');
-                });
-            });
-        });
-    </script>
 </body>
 </html>

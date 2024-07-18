@@ -18,6 +18,7 @@ Telegram [https://t.me/blazetoken_Community] $BLAZE Community
 X [https://x.com/blaze_meme_coin] $BLAZE TOKEN
 """
 
+
 class UserState(StatesGroup):
     username = State()
     amount = State()
@@ -26,6 +27,7 @@ class UserState(StatesGroup):
     invited_friends_usernames = State()
     support_query = State()
     feedback = State()
+
 
 @router.message(CommandStart())
 async def start_command(message: Message, state: FSMContext):
@@ -40,6 +42,7 @@ async def start_command(message: Message, state: FSMContext):
         insert_user(user_id, username, first_name)
 
     await message.answer(GREETING, reply_markup=START)
+
 
 @router.message(Command('profile'))
 async def profile_command(message: Message, state: FSMContext):
@@ -58,6 +61,7 @@ async def profile_command(message: Message, state: FSMContext):
         )
     else:
         await message.answer("Profile not found. Please start with /start")
+
 
 @router.callback_query(lambda c: c.data == 'invite')
 async def handle_invite(callback_query: CallbackQuery, state: FSMContext):

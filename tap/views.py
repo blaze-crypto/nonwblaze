@@ -88,13 +88,6 @@ def task_complete(request, task_id):
     return redirect(task.task_url)
 
 
-from django.shortcuts import redirect
-from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
-
-from .models import Friends, Coins  # Assuming you have models for Friends and Coins
-
-
 class FriendsView(ListView):
     template_name = 'friend.html'
     context_object_name = 'friends_list'
