@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Login page
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container bg-primary text-center">
+    <h1>User login page</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <a href="{% url 'password_reset' %}" class="text-white">Forgot password?</a>
+        <input type="submit" value="Log In" class="btn btn-success mt-3">
+    </form>
+    <p>You don't have an account? <a href="{% url 'registration' %}" class="text-white">Register</a></p>
+</div>
+{% endblock %}

@@ -8,6 +8,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from tap.views import RegistrationView
 
 from BLAZEE import settings
 
@@ -24,10 +25,9 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/register',include('rest_framework.urls')),
+    path('api/register', include('rest_framework.urls')),
     # my apps
     path('', include('tap.urls')),
     # swagger

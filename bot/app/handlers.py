@@ -5,6 +5,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from .keyboards import START, profile
 from .database.data import insert_user, get_user, update_user
+import requests
 
 router = Router()
 
@@ -29,26 +30,14 @@ class UserState(StatesGroup):
     feedback = State()
 
 
-WEB_APP_URL = "https://your-web-app.com/api/register"
-
-
 @router.message(CommandStart())
 async def start_command(message: Message, state: FSMContext):
     user_id = message.from_user.id
     first_name = message.from_user.first_name
-    last_name = message.from_user.last_name
     username = message.from_user.username if message.from_user.username else first_name
-
     user = get_user(user_id)
-
     if user is None:
         insert_user(user_id, username, first_name)
-
-    # Data to send to web app (replace with relevant user data)
-    data = {"username": username, "first_name": first_name, "last_name": last_name}
-
-    # Send data to web app using an HTTP library
-    await send_http_request(WEB_APP_URL, method="POST", json=data)
 
     await message.answer(GREETING, reply_markup=START)
 

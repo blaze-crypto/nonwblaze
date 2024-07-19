@@ -1,13 +1,15 @@
 from django.contrib import messages
-from django.contrib.auth import get_user_model
-from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth import get_user_model, login, authenticate, logout
+from django.shortcuts import redirect, get_object_or_404, render
 from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, CreateView
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
 
+from .forms import RegistrationForm
 from .models import Coins, Tasks, Boosts, UserBoost, TasksTypes, Friends
 from .serializers import (CoinsSerializer, GetCoinsSerializer,
                           TasksSerializer, GetTasksSerializer,
@@ -28,6 +30,39 @@ class RegisterViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data, status=HTTP_201_CREATED)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+
+
+class RegistrationView(CreateView):
+    model = User
+    form_class = RegistrationForm
+    template_name = 'registration/register.html'
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.set_password(user.password)
+        user.save()
+        login(self.request, user)
+        return redirect(self.success_url)
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'registration/login.html', {'error_message': 'Invalid credentials'})
+    else:
+        return render(request, 'registration/login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/login')
 
 
 class CoinViewset(viewsets.ModelViewSet):
@@ -97,7 +132,7 @@ class TaskView(ListView):
         return context
 
 
-@login_required
+@login_required(login_url='registration')
 def task_complete(request, task_id):
     task = get_object_or_404(Tasks, id=task_id)
     user_coins, created = Coins.objects.get_or_create(coin_user=request.user)
@@ -131,7 +166,7 @@ class FriendsView(ListView):
         context['friends'] = zip(friends, invite_links)
         return context
 
-    @login_required
+    @login_required(login_url='registration')
     def post(self, request, *args, **kwargs):
         if 'invited_friend_id' in request.POST:
             invited_friend_id = request.POST['invited_friend_id']
@@ -166,20 +201,16 @@ class BoostView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        # Get current user and user's boosts and levels
         user = self.request.user
         user_boosts = UserBoost.objects.filter(user=user)
         user_boost_levels = {boost.boost.id: boost.level for boost in user_boosts}
-
-        # Add boosts and user_boost_levels to the context
         context['boosts'] = self.get_queryset()
         context['user_boost_levels'] = user_boost_levels
 
         return context
 
 
-@login_required
+@login_required(login_url='registration')
 def buy_boost(request):
     if request.method == 'POST':
         boost_id = request.POST.get('boost_id')
