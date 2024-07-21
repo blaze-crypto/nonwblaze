@@ -1,0 +1,9 @@
+.brand-link img, .user-panel img, .login-logo img {
+    height: 50%; /* Maintain aspect ratio */
+    width: 50%;  /* Adjust width as needed */
+    max-width: 150px; /* Maximum width, adjust as necessary */
+}
+
+.brand-link img {
+    border-radius: 50%; /* Make the image circular if needed */
+}
