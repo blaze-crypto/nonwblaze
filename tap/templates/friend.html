@@ -35,18 +35,6 @@
     </div>
 
     <script src="{% static 'js/script.js' %}"></script>
-    <script>
-            function copyInviteLink(link) {
-                navigator.clipboard.writeText(link)
-                    .then(() => {
-                        console.log('Invite link copied to clipboard!');
-                        alert('Invite link copied to clipboard!');
-                    })
-                .catch(err => {
-                    console.error('Could not copy text:', err);
-                    alert('Could not copy text: ' + err);
-                });
-            }
-    </script>
+    <script src="{% static 'js/copy_invinite.js' %}"></script>
 </body>
 </html>

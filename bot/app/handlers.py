@@ -5,7 +5,6 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from .keyboards import START, profile
 from .database.data import insert_user, get_user, update_user
-import requests
 
 router = Router()
 

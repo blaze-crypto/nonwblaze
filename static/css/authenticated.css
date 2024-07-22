@@ -1,0 +1,268 @@
+/* Base reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    background: #2c2f33;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #2c2f33, #23272a);
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 300;
+    text-transform: capitalize;
+    letter-spacing: 4px;
+}
+
+.main-w3layouts {
+    padding: 3em 0 1em;
+}
+
+.main-agileinfo {
+    width: 35%;
+    margin: 3em auto;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.agileits-top {
+    padding: 3em;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    font-size: 0.9em;
+    color: #ffffff;
+    font-weight: 300;
+    width: 94.5%;
+    display: block;
+    border: none;
+    padding: 0.8em;
+    margin-bottom: 1.5em;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+    border-bottom: 1px solid #7289da;
+    outline: none;
+}
+
+input[type="submit"] {
+    font-size: 0.9em;
+    color: #ffffff;
+    background: #7289da;
+    border: none;
+    cursor: pointer;
+    padding: 0.9em;
+    width: 100%;
+    margin: 2em 0;
+    letter-spacing: 4px;
+    transition: background 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background: #5a73ba;
+}
+
+.agileits-top p {
+    font-size: 1em;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.agileits-top p a {
+    color: #7289da;
+    transition: color 0.3s ease-in-out;
+}
+
+.agileits-top p a:hover {
+    color: #5a73ba;
+}
+
+.wthree-text label {
+    font-size: 0.9em;
+    color: #ffffff;
+    cursor: pointer;
+    position: relative;
+}
+
+input.checkbox {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input.checkbox:before {
+    content: "";
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    background: inherit;
+}
+
+input.checkbox:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid #ffffff;
+    transition: 0.4s ease-in-out;
+}
+
+input.checkbox:checked:after {
+    transform: rotate(-45deg);
+    height: 0.5rem;
+    border-color: #7289da;
+    border-top-color: transparent;
+    border-right-color: transparent;
+}
+
+/* Copyright */
+.colorlibcopy-agile {
+    margin: 2em 0 1em;
+    text-align: center;
+}
+
+.colorlibcopy-agile p {
+    font-size: 0.9em;
+    color: #ffffff;
+    line-height: 1.8em;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.colorlibcopy-agile p a {
+    color: #7289da;
+    transition: color 0.3s ease-in-out;
+}
+
+.colorlibcopy-agile p a:hover {
+    color: #5a73ba;
+}
+
+/* Bubbles */
+.wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.colorlib-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.colorlib-bubbles li {
+    position: absolute;
+    list-style: none;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.15);
+    bottom: -160px;
+    animation: square 20s infinite linear;
+    border-radius: 50%;
+}
+
+.colorlib-bubbles li:nth-child(1) {
+    left: 10%;
+}
+
+.colorlib-bubbles li:nth-child(2) {
+    left: 20%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 2s;
+    animation-duration: 17s;
+}
+
+.colorlib-bubbles li:nth-child(3) {
+    left: 25%;
+    animation-delay: 4s;
+}
+
+.colorlib-bubbles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-duration: 22s;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.colorlib-bubbles li:nth-child(5) {
+    left: 70%;
+}
+
+.colorlib-bubbles li:nth-child(6) {
+    left: 80%;
+    width: 120px;
+    height: 120px;
+    animation-delay: 3s;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.colorlib-bubbles li:nth-child(7) {
+    left: 32%;
+    width: 160px;
+    height: 160px;
+    animation-delay: 7s;
+}
+
+.colorlib-bubbles li:nth-child(8) {
+    left: 55%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 15s;
+    animation-duration: 40s;
+}
+
+.colorlib-bubbles li:nth-child(9) {
+    left: 25%;
+    width: 10px;
+    height: 10px;
+    animation-delay: 2s;
+    animation-duration: 40s;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.colorlib-bubbles li:nth-child(10) {
+    left: 90%;
+    width: 160px;
+    height: 160px;
+    animation-delay: 11s;
+}
+
+@keyframes square {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-700px) rotate(600deg);
+    }
+}
