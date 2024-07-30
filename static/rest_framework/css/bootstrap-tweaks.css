@@ -10,12 +10,14 @@ a single block in the template.
   background: transparent;
   border-top-color: transparent;
   padding-top: 0;
+  font-family: 'Press Start 2P', cursive;
   text-align: right;
 }
 
 #generic-content-form textarea {
   font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
   font-size: 80%;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .navbar-inverse .brand a {
@@ -44,14 +46,17 @@ a single block in the template.
 
 .navbar .nav li, .navbar .nav li a, .navbar .brand:hover {
   color: white;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .nav-list > .active > a, .nav-list > .active > a:hover {
   background: #2C2C2C;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .navbar .dropdown-menu li a, .navbar .dropdown-menu li {
   color: #A30000;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .navbar .dropdown-menu li a:hover {
@@ -88,6 +93,7 @@ ul.breadcrumb {
 
 html {
   width:100%;
+  font-family: 'Press Start 2P', cursive;
   background: none;
 }
 
@@ -99,6 +105,7 @@ html {
 body {
   background: url("../img/grid.png") repeat-x;
   background-attachment: fixed;
+  font-family: 'Press Start 2P', cursive;
 }
 
 #content {
@@ -157,6 +164,7 @@ html, body {
 
 .nav-tabs > .active > a:hover {
   background: #F5F5F5;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .tabbable.first-tab-active .tab-content {
@@ -199,6 +207,7 @@ footer a:hover {
 /* custom general page styles */
 .hero-unit h1, .hero-unit h2 {
   color: #A30000;
+  font-family: 'Press Start 2P', cursive;
 }
 
 body a {
