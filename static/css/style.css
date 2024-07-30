@@ -80,12 +80,14 @@ h1 {
     display: flex;
     justify-content: space-around;
     width: 100%;
+    font-family: 'Press Start 2P', cursive;
     margin-bottom: 20px;
 }
 
 button {
     background-color: #1c1c1c;
     color: white;
+    font-family: 'Press Start 2P', cursive;
     border: 2px solid #ff9800;
     border-radius: 5px;
     padding: 10px 20px;
@@ -296,6 +298,7 @@ body {
     font-family: 'Press Start 2P', cursive; /* Use 'Press Start 2P' for the entire page */
     background: linear-gradient(45deg, #1c1c1c, #ff9800);
     color: white;
+    font-family: 'Press Start 2P', cursive;
     overflow-x: hidden;
 }
 
@@ -340,6 +343,7 @@ body {
     width: 70%;
     max-width: 1300px;
     margin-top: 20px;
+    font-family: 'Press Start 2P', cursive;
     /* Enable scrolling on small screens */
     overflow-y: auto;
     /* Define scrollbar styles */
@@ -361,6 +365,7 @@ body {
     text-align: left;
     position: relative;
     overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
     transition: transform 0.3s ease;
     cursor: pointer;
     border-radius: 10px;
@@ -491,6 +496,7 @@ body {
     transform: translateX(-50%);
     background-color: #4CAF50;
     color: white;
+    font-family: 'Press Start 2P', cursive;
     padding: 15px 20px;
     font-family: 'Press Start 2P', cursive;
     border-radius: 5px;
@@ -628,6 +634,7 @@ body {
     transition: background-color 0.3s, transform 0.3s;
     margin-bottom: 10px;
     box-shadow: 0 4px #ffa726;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .invite-button:hover {
@@ -651,6 +658,7 @@ body {
     width: 70%;
     max-width: 800px;
     text-align: center;
+    font-family: 'Press Start 2P', cursive;
     margin-bottom: 20px;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
