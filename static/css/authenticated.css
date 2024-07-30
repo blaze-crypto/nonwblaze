@@ -3,6 +3,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: 'Press Start 2P', cursive;
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
@@ -15,7 +16,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {
     background: #2c2f33;
     color: #ffffff;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Press Start 2P', cursive;
     background: linear-gradient(to right, #2c2f33, #23272a);
     background-attachment: fixed;
 }
@@ -73,6 +74,7 @@ input[type="submit"] {
     cursor: pointer;
     padding: 0.9em;
     width: 100%;
+    font-family: 'Press Start 2P', cursive;
     margin: 2em 0;
     letter-spacing: 4px;
     transition: background 0.3s ease-in-out;
@@ -92,6 +94,7 @@ input[type="submit"]:hover {
 
 .agileits-top p a {
     color: #7289da;
+    font-family: 'Press Start 2P', cursive;
     transition: color 0.3s ease-in-out;
 }
 
@@ -110,6 +113,7 @@ input.checkbox {
     width: 1.2em;
     height: 1.2em;
     cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
     margin-right: 10px;
 }
 
@@ -138,6 +142,7 @@ input.checkbox:checked:after {
     border-color: #7289da;
     border-top-color: transparent;
     border-right-color: transparent;
+    font-family: 'Press Start 2P', cursive;
 }
 
 /* Copyright */
@@ -152,6 +157,7 @@ input.checkbox:checked:after {
     line-height: 1.8em;
     letter-spacing: 1px;
     font-weight: 300;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .colorlibcopy-agile p a {
@@ -198,6 +204,7 @@ input.checkbox:checked:after {
     left: 20%;
     width: 80px;
     height: 80px;
+    font-family: 'Press Start 2P', cursive;
     animation-delay: 2s;
     animation-duration: 17s;
 }
@@ -239,6 +246,7 @@ input.checkbox:checked:after {
     width: 20px;
     height: 20px;
     animation-delay: 15s;
+    font-family: 'Press Start 2P', cursive;
     animation-duration: 40s;
 }
 
@@ -246,6 +254,7 @@ input.checkbox:checked:after {
     left: 25%;
     width: 10px;
     height: 10px;
+    font-family: 'Press Start 2P', cursive;
     animation-delay: 2s;
     animation-duration: 40s;
     background-color: rgba(255, 255, 255, 0.3);
@@ -255,6 +264,7 @@ input.checkbox:checked:after {
     left: 90%;
     width: 160px;
     height: 160px;
+    font-family: 'Press Start 2P', cursive;
     animation-delay: 11s;
 }
 
